@@ -1,11 +1,13 @@
 #!/usr/bin/python3
-""" my first proyect AirBnB """
+"""
+Module base_model
+"""
 
 
 import uuid
 import datetime
 import models
-#from models.__init__ import storage
+
 
 class BaseModel:
     """class base basemodel that define
@@ -25,8 +27,9 @@ class BaseModel:
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.datetime.now()
-            self.updated_at = datetime.datetime.now()
+            self.updated_at = self.created_at
             models.storage.new(self)
+            models.storage.save()
 
     def __str__(self):
         """str funtion that print
@@ -52,7 +55,9 @@ class BaseModel:
         """
         value_dict = self.__dict__.copy()
         value_dict["__class__"] = self.__class__.__name__
-        value_dict["created_at"] = self.created_at.strftime('%Y-%m-%dT%H:%M:%S.%f%z')
-        value_dict["updated_at"] = self.updated_at.strftime('%Y-%m-%dT%H:%M:%S.%f%z')
+        if "created_at" in value_dict.keys():
+            value_dict["created_at"] = self.created_at.strftime('%Y-%m-%dT%H:%M:%S.%f%z')
+        if "updated_at" in value_dict.keys():
+            value_dict["updated_at"] = self.updated_at.strftime('%Y-%m-%dT%H:%M:%S.%f%z')
 
         return value_dict
