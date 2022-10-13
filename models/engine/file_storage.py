@@ -28,28 +28,28 @@ class FileStorage():
 		set in __objects with key
 		"""
 		key_cls = "{}.{}".format(obj.__class__.__name__,obj.id)
-		self.__objects[key_cls] = obj.to_dict()
+		self.__objects[key_cls] = obj
 
 	def save(self):
 		"""Public Method
 		serializes __objects to JSON file: __file_path
 		"""
+		json_objects = {}
+		for key in FileStorage.__objects:
+			json_objects[key] = FileStorage.__objects[key].to_dict()
 		with open(FileStorage.__file_path, 'w') as fd:
-			json.dump(FileStorage.__objects, fd)
+			json.dump(json_objects, fd)
 
 	def reload(self):
 		"""Public Method
 		deserializes JSON file: __file_path
 		"""
 		try:
-			with open(FileStorage.__file_path, 'r', encoding="utf-8") as fd:
+			with open(FileStorage.__file_path, 'r') as fd:
 				json_dict = json.load(fd)
 			for key in json_dict.keys():
-				FileStorage.__objects[key] = classes[json_dict[key]["__class__"]](**json_dict[key])
+				class_obj = json_dict[key]["__class__"]
+				re_obj = classes[class_obj](**json_dict[key])
+				FileStorage.__objects[key] = re_obj
 		except FileNotFoundError:
 			return
-				
-
-
-
-
