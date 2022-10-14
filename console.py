@@ -5,6 +5,7 @@ import os
 import models 
 from models.base_model import BaseModel
 
+
 classes = {'BaseModel' : BaseModel}
 class HBNBCommand(cmd.Cmd):
     """mi class"""
@@ -36,13 +37,36 @@ class HBNBCommand(cmd.Cmd):
                 key = lista[0] + "." + lista[1]
                 if key in models.storage.all():
                     print(models.storage.all()[key])
-
                 else:
                     print("** no instance found **")
             else:
                 print("** instance id missing **")
         else:
             print("** class doesn't exist **")
+
+    def do_destroy(self):
+        """Deletes an instance based
+        on the class name and id"""
+        lista = arg.split()
+        if len(lista)== 0:
+            print("** class name missing **")
+
+        if lista[0] in classes:
+            if len(lista) > 1:
+                key = lista[0] + "." + lista[1]
+                if key in models.storage.all():
+                    del models.storage.all()[key]
+                    models.storage.save()
+            else:
+                print("** instance id missing **")
+        else:
+            print("** class doesn't exist **")
+
+    def do_all(self):
+        """Prints all string representation of all instances
+        based or not on the class name"""
+
+
 
     def __init__(self):
         cmd.Cmd.__init__(self)
