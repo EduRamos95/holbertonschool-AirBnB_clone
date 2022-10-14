@@ -2,11 +2,12 @@
 """my module console.py"""
 import cmd
 import os
-import models 
+import models
 from models.base_model import BaseModel
+from models.engine.file_storage import classes
 
 
-classes = {'BaseModel' : BaseModel, "Cuadrado": "Cuadrado"}
+# classes = {'BaseModel' : BaseModel, "Cuadrado": "Cuadrado"}
 class HBNBCommand(cmd.Cmd):
     """mi class"""
     intro = "Simple shell yourwelcome wilson Linux."
@@ -15,7 +16,7 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, arg):
         """Command to Creates a new instance of a class"""
         lista = arg.split()
-        if len(lista)== 0:
+        if len(lista) == 0:
             print("** class name missing **")
 
         if lista[0] in classes:
@@ -23,14 +24,14 @@ class HBNBCommand(cmd.Cmd):
             print(instance.id)
             instance.save()
         else:
-# from models.__init__ import storage
+            # from models.__init__ import storage
             print("** class doesn't exist **")
 
     def do_show(self, arg):
         """Command to Prints the string
         representation of an instance"""
         lista = arg.split()
-        if len(lista)== 0:
+        if len(lista) == 0:
             print("** class name missing **")
 
         if lista[0] in classes:
@@ -49,7 +50,7 @@ class HBNBCommand(cmd.Cmd):
         """Deletes an instance based
         on the class name and id"""
         lista = arg.split()
-        if len(lista)== 0:
+        if len(lista) == 0:
             print("** class name missing **")
 
         if lista[0] in classes:
@@ -82,7 +83,6 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exists **")
 
-
     def __init__(self):
         cmd.Cmd.__init__(self)
         self.prompt = '(hbnb) '
@@ -111,4 +111,3 @@ class HBNBCommand(cmd.Cmd):
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
-
