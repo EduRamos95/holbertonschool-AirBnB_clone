@@ -3,12 +3,18 @@
 import cmd
 import os
 import models
+import shlex
 from datetime import datetime
 from models.base_model import BaseModel
 from models.engine.file_storage import classes
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
+from models.user import User
 
 
-# classes = {'BaseModel' : BaseModel, "Cuadrado": "Cuadrado"}
 class HBNBCommand(cmd.Cmd):
     """mi class"""
     intro = "Simple shell yourwelcome wilson Linux."
@@ -16,11 +22,11 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, arg):
         """Command to Creates a new instance of a class"""
-        lista = arg.split()
+        lista = shlex.split(arg)
         if len(lista) == 0:
             print("** class name missing **")
 
-        if lista[0] in classes:
+        elif lista[0] in classes:
             instance = classes[lista[0]]()
             print(instance.id)
             instance.save()
@@ -31,11 +37,11 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, arg):
         """Command to Prints the string
         representation of an instance"""
-        lista = arg.split()
+        lista = shlex.split(arg)
         if len(lista) == 0:
             print("** class name missing **")
 
-        if lista[0] in classes:
+        elif lista[0] in classes:
             if len(lista) > 1:
                 key = lista[0] + "." + lista[1]
                 if key in models.storage.all().keys():
@@ -50,7 +56,7 @@ class HBNBCommand(cmd.Cmd):
     def do_destroy(self, arg):
         """Deletes an instance based
         on the class name and id"""
-        lista = arg.split()
+        lista = shlex.split(arg)
         if len(lista) == 0:
             print("** class name missing **")
 
@@ -68,7 +74,7 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, arg):
         """Prints all string representation of all instances
         based or not on the class name"""
-        lista = arg.split()
+        lista = shlex.split(arg)
         obj_list = []
         if len(lista) == 0:
             for value in models.storage.all().values():
@@ -88,7 +94,7 @@ class HBNBCommand(cmd.Cmd):
         """Updates an instance based on the class
         name and id by adding or updating attribute
         (save the change into the JSON file)."""
-        lista = arg.split()
+        lista = shlex.split(arg)
         data_update = ["id", "created_at", "update_at"]
         objects = models.storage.all()
 
@@ -105,8 +111,10 @@ class HBNBCommand(cmd.Cmd):
             key = lista[0] + "." + lista[1]
             if key not in models.storage.all():
                 print("** no instance found **")
-            elif len(lista) == 3:
+            elif len(lista) == 2:
                 print("** attribute name missing **")
+            elif len(lista) == 3:
+                print("** value missing **")
             elif lista[2] not in data_update:
                 obj = objects[key]
                 obj.__dict__[lista[2]] = lista[3]
