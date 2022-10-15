@@ -3,6 +3,7 @@
 import cmd
 import os
 import models
+from datetime import datetime
 from models.base_model import BaseModel
 from models.engine.file_storage import classes
 
@@ -53,7 +54,7 @@ class HBNBCommand(cmd.Cmd):
         if len(lista) == 0:
             print("** class name missing **")
 
-        if lista[0] in classes:
+        elif lista[0] in classes:
             if len(lista) > 1:
                 key = lista[0] + "." + lista[1]
                 if key in models.storage.all().keys():
@@ -82,6 +83,35 @@ class HBNBCommand(cmd.Cmd):
             print(obj_str)
         else:
             print("** class doesn't exists **")
+
+    def do_update(self, arg):
+        """Updates an instance based on the class
+        name and id by adding or updating attribute
+        (save the change into the JSON file)."""
+        lista = arg.split()
+        data_update = ["id", "created_at", "update_at"]
+        objects = models.storage.all()
+
+        if len(lista) == 0:
+            print("** class name missing **")
+
+        elif lista[0] not in classes:
+            print("** class doesn't exist **")
+
+        elif len(lista) == 1:
+            print("** instance id missing **")
+
+        else:
+            key = lista[0] + "." + lista[1]
+            if key not in models.storage.all():
+                print("** no instance found **")
+            elif len(lista) == 3:
+                print("** attribute name missing **")
+            elif lista[2] not in data_update:
+                obj = objects[key]
+                obj.__dict__[lista[2]] = lista[3]
+                # obj.updated_at = datetime.now()
+                obj.save()
 
     def __init__(self):
         cmd.Cmd.__init__(self)
