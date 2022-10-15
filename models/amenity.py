@@ -13,3 +13,7 @@ class Amenity(BaseModel):
     Public class attributes: Name
     """
     name = ""
+
+    def __init__(self, *args, **kwargs):
+        """initializes Amenity"""
+        super().__init__(*args, **kwargs)
