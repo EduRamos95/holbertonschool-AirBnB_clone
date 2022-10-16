@@ -91,7 +91,7 @@ class HBNBCommand(cmd.Cmd):
             obj_str = "[" + ", ".join(obj_list) + "]"
             print(obj_str)
         else:
-            print("** class doesn't exists **")
+            print("** class doesn't exist **")
 
     def do_update(self, arg):
         """Updates an instance based on the class
