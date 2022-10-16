@@ -19,6 +19,7 @@ class HBNBCommand(cmd.Cmd):
     """mi class"""
     intro = "Simple shell yourwelcome wilson Linux."
     last_output = ''
+    prompt = '(hbnb) '
 
     def do_create(self, arg):
         """Command to Creates a new instance of a class"""
@@ -121,9 +122,9 @@ class HBNBCommand(cmd.Cmd):
                 # obj.updated_at = datetime.now()
                 obj.save()
 
-    def __init__(self):
-        cmd.Cmd.__init__(self)
-        self.prompt = '(hbnb) '
+#    def __init__(self):
+#        cmd.Cmd.__init__(self)
+#        self.prompt = '(hbnb) '
 
     def do_quit(self, arg):
         """Quit command to exit the program"""
@@ -131,6 +132,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, arg):
         """to exit the program"""
+        print()
         return True
 
 #   def do_exit(self, arg):
