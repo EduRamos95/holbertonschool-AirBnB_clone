@@ -22,7 +22,8 @@ class BaseModel:
                     continue
                 setattr(self, key, value)
                 if key in ["created_at", "updated_at"]:
-                    new_time = datetime.datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                    fmt = "%Y-%m-%dT%H:%M:%S.%f"
+                    new_time = datetime.datetime.strptime(value, fmt)
                     setattr(self, key, new_time)
         else:
             self.id = str(uuid.uuid4())
@@ -37,7 +38,8 @@ class BaseModel:
         (<self.id>): print id
         <self.__dict__> print dict_
         """
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}".format(self.__class__.__name__,
+                                     self.id, self.__dict__)
 
     def save(self):
         """method
@@ -55,9 +57,10 @@ class BaseModel:
         """
         value_dict = self.__dict__.copy()
         value_dict["__class__"] = self.__class__.__name__
+        fmt2 = "%Y-%m-%dT%H:%M:%S.%f%z"
         if "created_at" in value_dict.keys():
-            value_dict["created_at"] = self.created_at.strftime('%Y-%m-%dT%H:%M:%S.%f%z')
+            value_dict["created_at"] = self.created_at.strftime(fmt2)
         if "updated_at" in value_dict.keys():
-            value_dict["updated_at"] = self.updated_at.strftime('%Y-%m-%dT%H:%M:%S.%f%z')
+            value_dict["updated_at"] = self.updated_at.strftime(fmt2)
 
         return value_dict
