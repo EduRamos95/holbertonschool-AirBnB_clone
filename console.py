@@ -18,8 +18,8 @@ from models.user import User
 
 class HBNBCommand(cmd.Cmd):
     """mi class"""
-    intro = "Simple shell yourwelcome wilson Linux."
-    last_output = ''
+#    intro = "Simple shell yourwelcome wilson Linux."
+#    last_output = ''
     prompt = '(hbnb) '
 
     def emptyline(self):
