@@ -141,5 +141,6 @@ class HBNBCommand(cmd.Cmd):
 #        output = os.popen(arg).read()
 #        print(output)
 
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
