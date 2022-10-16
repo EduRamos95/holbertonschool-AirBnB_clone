@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """my module console.py"""
 import cmd
-import os
-import sys
+# import os
+# import sys
 import models
 import shlex
 from datetime import datetime
@@ -21,6 +21,10 @@ class HBNBCommand(cmd.Cmd):
     intro = "Simple shell yourwelcome wilson Linux."
     last_output = ''
     prompt = '(hbnb) '
+
+    def emptyline(self):
+        """ pass line """
+        pass
 
     def do_quit(self, arg):
         """Quit command to exit the program"""
@@ -42,7 +46,6 @@ class HBNBCommand(cmd.Cmd):
             print(instance.id)
             instance.save()
         else:
-            # from models.__init__ import storage
             print("** class doesn't exist **")
 
     def do_show(self, arg):
@@ -131,27 +134,12 @@ class HBNBCommand(cmd.Cmd):
             elif lista[2] not in data_update:
                 obj = objects[key]
                 obj.__dict__[lista[2]] = lista[3]
-                # obj.updated_at = datetime.now()
                 obj.save()
 
-#    def __init__(self):
-#        cmd.Cmd.__init__(self)
-#        self.prompt = '(hbnb) '
-
-
-#   def do_exit(self, arg):
-#        """end of file"""
-#        return True
-
-    def do_shell(self, arg):
-        """run a shell command"""
-        output = os.popen(arg).read()
-        print(output)
-
-    def emptyline(self):
-        """ overwriting the emptyline method """
-        pass
-
+#    def do_shell(self, arg):
+#        """run a shell command"""
+#        output = os.popen(arg).read()
+#        print(output)
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
