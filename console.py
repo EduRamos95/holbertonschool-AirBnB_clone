@@ -67,6 +67,8 @@ class HBNBCommand(cmd.Cmd):
                 if key in models.storage.all().keys():
                     del models.storage.all()[key]
                     models.storage.save()
+                else:
+                    print("** no instance found **")
             else:
                 print("** instance id missing **")
         else:
@@ -110,7 +112,7 @@ class HBNBCommand(cmd.Cmd):
 
         else:
             key = lista[0] + "." + lista[1]
-            if key not in models.storage.all():
+            if key not in models.storage.all().keys():
                 print("** no instance found **")
             elif len(lista) == 2:
                 print("** attribute name missing **")
@@ -146,7 +148,7 @@ class HBNBCommand(cmd.Cmd):
 
     def emptyline(self):
         """ overwriting the emptyline method """
-        return False
+        pass
 
 
 if __name__ == '__main__':
