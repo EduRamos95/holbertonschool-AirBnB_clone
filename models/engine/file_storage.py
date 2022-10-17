@@ -5,6 +5,7 @@ Module file_storage
 
 
 import json
+import os
 from models.base_model import BaseModel
 from models.user import User
 from models.place import Place
@@ -23,7 +24,7 @@ class FileStorage():
     and deserializes JSON file to instances
     """
 
-    __file_path = "file.json"
+    __file_path = os.environ["DATA_JS"]
     __objects = {}
 
     def all(self):
