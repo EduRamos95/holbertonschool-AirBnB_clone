@@ -62,6 +62,10 @@ Classes inherited from Base Model:
 * [*`state.py`*](https://github.com/EduRamos95/holbertonschool-AirBnB_clone/blob/main/models/state.py)
 * [*`user.py`*](https://github.com/EduRamos95/holbertonschool-AirBnB_clone/blob/main/models/user.py)
 
+<p >
+<img src="https://github.com/EduRamos95/holbertonschool-AirBnB_clone/blob/main/img/BaseModel.JPG?raw=true" width="1000px" height="700px" padding="auto" ></img>
+</p>
+
 #### `/models/engine` directory contains File Storage class that handles JASON serialization and deserialization :
 [**`file_storage.py`**](https://github.com/EduRamos95/holbertonschool-AirBnB_clone/blob/main/models/engine/file_storage.py) - serializes instances to a JSON file & deserializes back to instances
 * **`def all(self)`** - returns the dictionary  **__objects**
