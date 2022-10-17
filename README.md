@@ -1,5 +1,14 @@
 # AirBnB Clone - The Console
+
+<p align="center">
+<img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/UEZCFF3XMJF3XHZX5YIM5D735E.jpeg" width="700px" height="420px" padding="auto" ></img>
+</p>
+
 The console is the first segment of the AirBnB project at Holberton School that will collectively cover fundamental concepts of higher level programming. The goal of AirBnB project is to eventually deploy our server a simple copy of the AirBnB Website(HBnB). A command interpreter is created in this segment to manage objects for the AirBnB(HBnB) website.
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/DaisyGeraldine/holbertonschool-AirBnB_clone/master/AirBnB%20clone%20%29.png" width="700px" height="350px" ></img>
+</p>
 
 #### Functionalities of this command interpreter:
 * Create a *`new object`* (ex: a new `User` or a new `Place`)
@@ -13,11 +22,9 @@ The console is the first segment of the AirBnB project at Holberton School that 
 * [Environment](#environment)
 * [Installation](#installation)
 * [File Descriptions](#file-descriptions)
-* [Usage](#usage)
 * [Examples of use](#examples-of-use)
 * [Bugs](#bugs)
 * [Authors](#authors)
-* [License](#license)
 
 ## Environment
 This project is interpreted on Ubuntu 20.04 LTS using python3 (version 3.8.5)
@@ -68,7 +75,7 @@ TestBaseModelDocs class:
 * (in maintance)
 
 ## Examples of use
-```
+```py
 root@DESKTOP-F800J0P:~/FullStack-EDU/holbertonschool-AirBnB_clone# ./console.py
 (hbnb) all MyModel
 ** class doesn't exist **
@@ -129,6 +136,8 @@ EOF  all  create  destroy  help  quit  show  update
 (hbnb)
 root@DESKTOP-F800J0P:~/FullStack-EDU/holbertonschool-AirBnB_clone#
 ```
+<img src="https://github.com/EduRamos95/holbertonschool-AirBnB_clone/blob/main/img/json1.PNG?raw=true"></img>
+<img src="https://github.com/EduRamos95/holbertonschool-AirBnB_clone/blob/main/img/json2.PNG?raw=true"></img>
 
 ## Bugs
 No known bugs at this time.
@@ -136,3 +145,8 @@ No known bugs at this time.
 ## Authors
 * Edu Ramos - [Github](https://github.com/EduRamos95)
 * Wilson Valer - [Github](https://github.com/WilsonValer)
+
+| [<img src="https://avatars.githubusercontent.com/u/105248833?v=4" width=130><br><sub> Edu Ramos ✒️</sub>](https://github.com/EduRamos95)   | [<img src="https://avatars.githubusercontent.com/u/100174476?v=4" width=130><br><sub> Wilson Valer ✒️</sub>](https://github.com/WilsonValer)  |
+|--|--|
+|  |  |
+|  |  |
