@@ -78,15 +78,16 @@ button:hover {
 
 .locations .popover {
     padding-bottom: 2em;
+    padding-top: 1em;
 }
 
 .amenities .popover {
     padding: 1em 0;
 }
 
-.popover h2 {
-    margin-left: 20px;
-    margin-block-end: 0px;
+.popover li h2 {
+    margin: 0;
+    margin-left: -20px;
 }
 
 .popover li {
