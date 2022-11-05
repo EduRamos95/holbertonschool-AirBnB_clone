@@ -1,9 +1,12 @@
 header {
-    background-image: url("../images/logo.png");
-    background-repeat: no-repeat;
-    background-position-x: 20px;
-    background-color: #FFFFFF;
-    height: 60px;
+    background-color:#FFFFFF; 
+    height: 70px; 
     width: 100%;
-    border-bottom: 1px solid #CCCCCC;
+    border-bottom: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #CCCCCC;
+    background-image: url("../images/hbnb-header.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: 20px;
 }
