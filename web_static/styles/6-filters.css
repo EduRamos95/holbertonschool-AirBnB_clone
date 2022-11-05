@@ -85,14 +85,18 @@ button:hover {
     padding: 1em 0;
 }
 
+.amenities .popover li {
+    margin-left: 40px;
+}
+
 .popover li h2 {
     margin: 0;
-    margin-left: -20px;
+    margin-left: 20px;
 }
 
 .popover li {
 	list-style-type: none;
-	margin-left: 40px;
+	/*margin-left: 40px;*/
 	padding: 4px;
 }
 
